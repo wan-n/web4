@@ -8,28 +8,28 @@
 </head>
 <body>
 
-    <h1>우리집 가전제품</h1>
-    <p id="item-one"></p>
-    <p id="item-two"></p>
-    <p id="item-three"></p>
+    <h1>가전제품 3가지</h1>
+    <p class="item-one"></p>
+    <p class="item-two"></p>
+    <p class="item-three"></p>
     
     <script>
-        var item1 = document.querySelector('#item-one');
-        var item2 = document.querySelector('#item-two');
-        var item3 = document.querySelector('#item-three');
+        // var item1 = document.querySelector('.item-one');
+        // var item2 = document.querySelector('.item-two');
+        // var item3 = document.querySelector('.item-three');
 
-        var input1 = prompt('집에 있는 가전제품 3가지');
-        var input2 = prompt('집에 있는 가전제품 3가지');
-        var input3 = prompt('집에 있는 가전제품 3가지');
+        // var input1 = prompt('가전제품 3가지');
+        // var input2 = prompt('가전제품 3가지');
+        // var input3 = prompt('가전제품 3가지');
 
-        item1.innerText = input1;
-        item2.innerText = input2;
-        item3.innerText = input3;
+        // item1.innerText = input1;
+        // item2.innerText = input2;
+        // item3.innerText = input3;
 
         // 간단하게
-        // item1.innerText = prompt('집에 있는 가전제품 3가지');
-        // item2.innerText = prompt('집에 있는 가전제품 3가지');
-        // item3.innerText = prompt('집에 있는 가전제품 3가지');
+        document.querySelector('.item-one').innerText = prompt('가전제품 3가지');
+        document.querySelector('.item-two').innerText = prompt('가전제품 3가지');
+        document.querySelector('.item-three').innerText = prompt('가전제품 3가지');
 
 
     </script>
