@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        당신의 혈액형은 <span class="blood-type"></span>형 입니다.
+    </p>
+
+    <script>
+        //클래스명으로 마크업된 해당 요소를 불러온다.(태그명, 클래스명, 아이디명 모두 가능)
+        //요소 내에 작성된 데이터를 가져오는 것이 아닌 요소 자체에 접근한 것.
+        //querySelector : 해당 클래스를 가진 요소가 여러 개라면 최상단 요소만 선택된다.
+        var bloodType = document.querySelector('.blood-type');
+        var input = prompt('당신의 혈액형은 무엇인가요?');
+
+        //innerText : 내부에 작성된 텍스트에 접근한다.
+        //요소의 내부 텍스트를 prompt로 입력받은 데이터로 변경해준다.
+        bloodType.innerText = input;
+    </script>
+</body>
+</html>
