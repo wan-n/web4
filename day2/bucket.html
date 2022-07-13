@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    복숭아 농장
+    오늘 수확한 복숭아 개수 (입력)
+    한 바구니에 복숭아가 몇 개까지 들어가는가 (입력)
+
+    몇 개의 바구니가 필요한지
+    alert()로 출력 
+    -->
+
+    <script>
+        var itemNum = prompt('오늘 수확한 복숭아는 몇개인가요?');
+        var bucketSize = prompt('바구니에 들어가는 복숭아의 개수는 몇개인가요?');
+
+        var temp = itemNum%bucketSize;
+        var bucketSize = parseInt(itemNum/bucketSize);
+
+        if(temp == 0){
+            alert('바구니는 ' + bucketSize + '개 필요합니다.');
+        }else{
+            alert('바구니는 ' + ++bucketSize + '개 필요합니다.');
+        }
+        
+    </script>
+
+</body>
+</html>

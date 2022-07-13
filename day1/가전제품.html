@@ -9,9 +9,14 @@
 <body>
 
     <h1>가전제품 3가지</h1>
+    <!-- 1 -->
     <p class="item-one"></p>
     <p class="item-two"></p>
     <p class="item-three"></p>
+    <!-- 2 -->
+    <p class="item"></p>
+    <p class="item"></p>
+    <p class="item"></p>
     
     <script>
         // var item1 = document.querySelector('.item-one');
@@ -26,10 +31,24 @@
         // item2.innerText = input2;
         // item3.innerText = input3;
 
-        // 간단하게
-        document.querySelector('.item-one').innerText = prompt('가전제품 3가지');
-        document.querySelector('.item-two').innerText = prompt('가전제품 3가지');
-        document.querySelector('.item-three').innerText = prompt('가전제품 3가지');
+
+
+
+
+        // 간단하게-1
+         document.querySelector('.item-one').innerText = prompt('가전제품 3가지');
+         document.querySelector('.item-two').innerText = prompt('가전제품 3가지');
+         document.querySelector('.item-three').innerText = prompt('가전제품 3가지');
+
+
+
+
+        // 간단하게-2
+        let item = document.getElementsByClassName('item');
+
+        for(let i = 0; i < item.length; i++){
+            item[i].innerText = prompt('가전제품 3가지');
+        }
 
 
     </script>
