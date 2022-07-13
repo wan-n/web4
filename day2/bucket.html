@@ -20,11 +20,9 @@
         var itemNum = prompt('오늘 수확한 복숭아는 몇개인가요?');
         var bucketSize = prompt('바구니에 들어가는 복숭아의 개수는 몇개인가요?');
 
-
-        var temp = false;   //0
-        // 나머지가 없으면(= 0) 비교 연산 결과는 false
-        // 나머지가 있으면(!= 0) 비교 연산 결과는 true
-        var addBucket = itemNum%bucketSize != temp 
+        // 나머지가 없으면(= 0) 비교 연산 결과는 false  -> 0
+        // 나머지가 있으면(!= 0) 비교 연산 결과는 true  -> 1
+        var addBucket = itemNum%bucketSize != 0 
         var bucketSize = parseInt(itemNum/bucketSize) + addBucket;
 
         alert('바구니는 ' + bucketSize + '개 필요합니다.');
