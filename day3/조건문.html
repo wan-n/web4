@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    조건문
+
+    <script>
+        /*
+        //조건식이 참이면 { }을 실행한다.
+        if(조건식){
+            //실행할 내용;
+        }else if{
+            //다른 조건일 경우 실행 내용;
+        }else{
+            //위 조건들을 제외한 나머지들 실행;
+        }
+        */
+
+/*
+        // 노키즈존, 초등학생은 들어올 수 없다.
+        kidsAge = prompt('아이가 몇살인가요?');
+
+        if(kidsAge <= 13){
+            alert('노키즈존, 입장 불가능합니다.');
+        }
+
+        if(kidsAge <= 13){
+            alert('노키즈존, 입장 불가능합니다.');
+        }else{
+            alert('어서오세요.');
+        }
+
+
+        //초등학생은 입장 불가능한 노키즈존이나, 2세 이하는 입장 가능할 경우
+        if(kidsAge <= 2){
+            alert('2세 이하는 입장 가능합니다.');
+        }else if(kidsAge <= 13){
+            alert('노키즈존, 입장 불가능합니다.');
+        }
+*/
+/*
+        //키 135cm 미만이면 롤러코스터에 탑승할 수 없다.
+        height = prompt('키 입력(숫자만)');
+
+        if(height < 135){
+            alert('탑승 불가능합니다.');
+        }else{
+            alert('탑승 가능합니다.');
+        }
+*/
+
+        //나이를 입력받아서 1~19세는 미성년자, 20~64세 성인, 65~100세 노인
+        age = prompt('나이 입력(숫자만)');
+
+
+        if(age >= 101){
+            alert('잘못된 입력');
+        }else if(age >= 65){
+            alert('노인');
+        }else if(age >= 20){
+            alert('성인');
+        }else if(age >= 1){
+            alert('미성년자');
+        }else{
+            alert('잘못된 입력');
+        }
+
+
+    </script>
+</body>
+</html>

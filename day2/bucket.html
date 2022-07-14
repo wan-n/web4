@@ -17,31 +17,45 @@
     -->
 
     <script>
+        /*
         var itemNum = prompt('오늘 수확한 복숭아는 몇개인가요?');
         var bucketSize = prompt('바구니에 들어가는 복숭아의 개수는 몇개인가요?');
 
         // 나머지가 없으면(= 0) 비교 연산 결과는 false  -> 0
         // 나머지가 있으면(!= 0) 비교 연산 결과는 true  -> 1
-        var addBucket = itemNum%bucketSize != 0 
-        var bucketSize = parseInt(itemNum/bucketSize) + addBucket;
+        var addBucket = itemNum % bucketSize != 0 
+        var bucketNum = parseInt(itemNum / bucketSize) + addBucket;
 
-        alert('바구니는 ' + bucketSize + '개 필요합니다.');
-
-
+        alert('바구니는 ' + bucketNum + '개 필요합니다.');
+        */
 
         /* 다른 방법
         var itemNum = prompt('오늘 수확한 복숭아는 몇개인가요?');
         var bucketSize = prompt('바구니에 들어가는 복숭아의 개수는 몇개인가요?');
 
-        var temp = itemNum%bucketSize;
-        var bucketSize = parseInt(itemNum/bucketSize);
+        var temp = itemNum % bucketSize;
+        var bucketNum = parseInt(itemNum / bucketSize);
 
         if(temp == 0){
-            alert('바구니는 ' + bucketSize + '개 필요합니다.');
+            alert('바구니는 ' + bucketNum + '개 필요합니다.');
         }else{
-            alert('바구니는 ' + ++bucketSize + '개 필요합니다.');
+            alert('바구니는 ' + ++bucketNum + '개 필요합니다.');
         }
         */
+
+        var itemNum = prompt('복숭아 수확 개수는?');
+        var bucketSize = 10;
+
+        var temp = itemNum % bucketSize;
+        var bucketNum = parseInt(itemNum / bucketSize);
+
+        if(temp != 0){
+            bucketNum++;
+        }
+
+        alert('바구니는 ' + bucketNum + '개 필요합니다.');
+
+
     </script>
 
 </body>
