@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    /*    
+        let b = 0;
+        for(let i = 0; i < 5; i++){  //let의 스코프 : 반복문 안에서 선언된 let 변수는 반복문이 끝나면 사라진다.
+            b = b + i;
+        }
+        console.log(b);  //10
+
+        for(let i = 0; i < 5; i++){
+            b = b + i;
+        }
+        console.log(b);  //20
+    */
+
+        let num = prompt('구구단 몇단?');
+
+        console.log(`${num}단을 출력합니다!`);
+        for(let i = 1; i <= 9; i++){
+            console.log(`${num} x ${i} = ${num * i}`);
+        }
+
+    </script>
+</body>
+</html>
