@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 200px;
+            height: 400px;
+            background-color: #ebebeb;
+            border: 1px solid #232323;
+            box-sizing: border-box;
+            padding: 32px;
+        }
+        .now-dan{
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <label for="">몇단 출력할까요?</label>
+    <input type="text" id="dan-input">
+    <button id="calc">출력</button>
+
+    <div class="container">
+        <h2 class="now-dan"></h2>
+        <p class="output"></p>
+    </div>
+    <script>
+    //함수 장점 : 재사용성, 유지보수, 가독성 좋음 
+    //함수의 호출 시 선언 위치는 상관이 없다. 함수 선언은 한 곳에 모아서 작성하는 것이 좋음
+
+        const calcButton = document.getElementById('calc');
+        calcButton.addEventListener('click', () => {
+            const danInput = document.getElementById('dan-input');
+            const nowDan = document.getElementsByClassName('now-dan');
+            const output = document.getElementsByClassName('output');
+            const dan = danInput.value;  //입력창에 입력받은 내용을 가져와 dan 변수에 저장
+
+            danInput.value = "";  //버튼 클릭 후 입력창의 내용은 지운다.
+
+            nowDan.innerTent = `${dan}단`;
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function 세트로실행(){
+            intro();
+            구구단();
+        }
+        
+        function intro(){
+            alert('안녕하세요');
+        }
+        
+        function 구구단(){
+            let dan = prompt("몇 단을 출력할까요?");
+            
+            for(let i = 1; i <= 9; i++){
+                console.log(`${dan} x ${i} = ${dan * i}`);
+            }
+        }
+
+        function 전달받는구구단(dan){
+            for(let i = 1; i <= 9; i++){
+                console.log(`${dan} x ${i} = ${dan * i}`);
+            }
+        }
+    </script>
+</body>
+</html>
