@@ -21,50 +21,52 @@
         .now-dan{
             margin-bottom: 16px;
         }
+        .test{
+            width: 100px;
+            height: 100px;
+        }
     </style>
 </head>
 <body>
     <label for="">몇단 출력할까요?</label>
-    <input type="text" id="dan-input">
+    <input id="dan-input" type="text">
     <button id="calc">출력</button>
 
     <div class="container">
-        <h2 class="now-dan"></h2>
+        <h2 id="now-dan"></h2>
         <p class="output"></p>
     </div>
     <script>
     //함수 장점 : 재사용성, 유지보수, 가독성 좋음 
     //함수의 호출 시 선언 위치는 상관이 없다. 함수 선언은 한 곳에 모아서 작성하는 것이 좋음
 
+
         const calcButton = document.getElementById('calc');
-        calcButton.addEventListener('click', () => {
+        /* 
+            ('click', function(){ ... });
+            파라미터가 하나일땐 소괄호 생략 가능, 파라미터가 없으면 소괄호 필수
+            이미 선언된 함수 호출 시 () 생략, 함수명만 쓴다.
+        */
+        // 이벤트 발생 시 함수 실행 -> 버튼 클릭 이벤트
+        calcButton.addEventListener('click', () => {    
             const danInput = document.getElementById('dan-input');
-            const nowDan = document.getElementsByClassName('now-dan');
+            const nowDan = document.getElementById('now-dan');
             const output = document.getElementsByClassName('output');
             const dan = danInput.value;  //입력창에 입력받은 내용을 가져와 dan 변수에 저장
 
             danInput.value = "";  //버튼 클릭 후 입력창의 내용은 지운다.
-
-            nowDan.innerTent = `${dan}단`;
-
-
+            nowDan.innerText = `${dan}단`;
+            output[0].innerText = "";  //HTMLCollection, 인덱스 지정 필요
+            for (let i = 1; i <= 9; i++) {
+                output[0].innerHTML += `${dan} x ${i} = ${dan * i}<br>`;
+            }
         });
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    /*
         function 세트로실행(){
             intro();
             구구단();
@@ -87,6 +89,8 @@
                 console.log(`${dan} x ${i} = ${dan * i}`);
             }
         }
+    */
+
     </script>
 </body>
 </html>
