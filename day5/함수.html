@@ -58,7 +58,7 @@
             nowDan.innerText = `${dan}단`;
             output[0].innerText = "";  //HTMLCollection, 인덱스 지정 필요
             for (let i = 1; i <= 9; i++) {
-                output[0].innerHTML += `${dan} x ${i} = ${dan * i}<br>`;
+                output[0].innerHTML += `${dan} x ${i} = ${dan * i}<br>`;  //innerHTML - 보안문제?
             }
         });
 

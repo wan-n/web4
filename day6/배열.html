@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="hi">hihi1</div>
+    <div class="hi">hihi2</div>
+    <div class="hi">hihi3</div>
+    <div class="hi">hihi4</div>
+    <div class="hi">hihi5</div>
+    <script>
+    /*
+        const 배열 = ['A', 'B', 'C'];
+        서로 관계되는 데이터를 하나로 묶는것
+        숫자, 문자, HTML요소, ...
+    */
+
+        const WEB4수강생 = ['이은빈', '김경희', '김수완', '임지민', '이다솜', '손경은', '남기쁨', '박도현', '김찬율', '김갑룡'];
+
+        function 반복문출석체크(){
+            for(let i = 0; i < WEB4수강생.length; i++){    //array.length : 배열의 길이 반환
+                console.log(`출석번호 ${i + 1}번은 ${WEB4수강생[i]}`);
+            }
+            
+        }
+
+
+        // //his 는 HTML컬렉션, 배열은 아니지만 배열같이 사용할 수 있는 객체
+        // //문서 내의 노드 컬렉션
+        // const his = document.getElementsByClassName('hi');   
+
+        // for(let i = 0; i < his.length; i++){
+        //     his[i].addEventListener('click', () => {
+        //         if(his[i].classList.contains('active')){    //클래스리스트에 active가 있으면(true)
+        //             his[i].classList.remove('active');       //클래스리스트에서 제거
+        //         }else{                                       //없으면
+        //             his[i].classList.add('active');          //클래스리스트에 추가
+        //         } 
+        //     });
+        // }
+
+
+        const his = document.getElementsByClassName('hi'); 
+        for(let i = 0; i < his.length; i++){
+            his[i].addEventListener('click', () => {
+                his[i].classList.toggle('active');
+            });
+        }
+
+    </script>
+</body>
+</html>

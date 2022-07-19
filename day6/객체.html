@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- onclick : addEventListener와 비슷한 역할, 함수명이 html 문서에 노출되기 때문에 주의 -->
+    <input type="button" onclick="귀요미들단체로짖기()" value="짖">
+
+    <script>
+        //덕진 객체 생성
+        const 덕진 = {
+            출생: '21년11월',      //key : value  -> property
+            털: '갈색',
+            종: '리트리버 믹스',
+
+            짖기: function(){     //객체 안의 함수 (=메서드) 호출 -> 덕진.짖기();
+                console.log('덕진: 멍멍!');
+            }
+        };
+
+        const 구름이 = {
+            출생: '21년9월',
+            털: '흰색',
+            종: '말티즈',
+
+            짖기: function(){
+                console.log('구름: 멍멍!');
+            }
+        };
+
+        const 귀요미들 = [덕진, 구름이];    //객체를 담은 배열
+
+        function 귀요미들단체로짖기(){
+            for(let i = 0; i < 귀요미들.length; i++){
+                귀요미들[i].짖기();
+            }
+        }
+
+
+
+
+        //클래스
+        class Dog{    //첫글자 대문자
+            constructor(name, birth, color, brood, voice){   //생성자
+                this.name = name;
+                this.birth = birth;
+                this.color = color;
+                this.brood = brood;
+                this.voice = voice;
+            }  
+            sound(){
+                console.log(`${this.name}: ${this.voice}`);
+            }
+        }
+
+        const dog1 = new Dog('덕진', '202111', 'brown', '리트리버믹스', '멍멍');  //dog1은 클래스 Dog를 기반으로 한 클래스 객체
+        dog1.sound();
+
+
+
+    </script>
+</body>
+</html>
