@@ -25,6 +25,7 @@
     <script>
 
         function moveCircle(){
+            //배열 안에 객체 넣기 가능
             const preset = [
                 {x: 0, y: 0},
                 {x: 300, y: 0},
@@ -34,9 +35,13 @@
 
             const circle = document.getElementById('circle');
             let index = Number(circle.dataset.index);
-            circle.dataset.index = Number(circle.dataset.index) + 300;  
+            circle.dataset.index = ++index;
 
-            circle.style.transform = `translate(${preset[index].x}px, translate(${preset[index].y}px)`;
+            if(index === 3){
+                circle.dataset.index = -1;
+            }
+
+            circle.style.transform = `translate(${preset[index].x}px, ${preset[index].y}px)`
         
         }
     </script>
