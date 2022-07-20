@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #circle{
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="circle" onclick="moveCircle()" data-index="0"></div>
+
+    <script>
+
+        function moveCircle(){
+            const preset = [
+                {x: 0, y: 0},
+                {x: 300, y: 0},
+                {x: 300, y: 300},
+                {x: 0, y: 300}
+            ];
+
+            const circle = document.getElementById('circle');
+            let index = Number(circle.dataset.index);
+            circle.dataset.index = Number(circle.dataset.index) + 300;  
+
+            circle.style.transform = `translate(${preset[index].x}px, translate(${preset[index].y}px)`;
+        
+        }
+    </script>
+</body>
+</html>

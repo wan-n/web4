@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        #circle{
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- data-x="0" -> html에서 변수처럼 사용 가능
+        자바스크립트에서 dataset으로 접근 -->
+    <div id="circle" onclick="moveCircle()" data-x="0"></div>
+
+    <script>
+
+        function moveCircle(){
+            const circle = document.getElementById('circle');
+            //자료형이 명시되어있지 않기 때문에 숫자로 바꿔주어야한다.
+            circle.dataset.x = Number(circle.dataset.x) + 300;  
+            circle.style.transform = `translateX(${circle.dataset.x}px)`;
+        
+        }
+    </script>
+</body>
+</html>
