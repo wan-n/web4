@@ -11,32 +11,37 @@
         const answer = Math.floor(Math.random() * 100 + 1);
         let count;
 
-        // const level = Number(prompt('난이도 선택(숫자만 입력)', '1: easy | 2: normal | 3: hard'));  //prompt는 문자열
-        // if(level === 1){
-        //     count = 6;
-        // }else if(level === 2){
-        //     count = 5;
-        // }else if(level === 3){
-        //     count = 4;
-        // }
+        console.log(answer);
 
-        //간단하게
-        count = 7 - prompt('난이도 선택(숫자만 입력)', '1: easy | 2: normal | 3: hard');
-        
-        for(let i = 0; i < count; i++){
-            const input = Number(prompt('Up&Down 게임 : 1부터 100 사이의 수 입력'));
+        const level = Number(prompt('난이도 선택(숫자만 입력)', '1: easy | 2: normal | 3: hard'));  //prompt는 문자열
+        if(level === 1){
+            count = 6;
+        }else if(level === 2){
+            count = 5;
+        }else if(level === 3){
+            count = 4;
+        }
+
+        while(count > 0){
+            const input = Number(prompt(`Up&Down 게임 : 1부터 100 사이의 수 입력. 남은 기회 : ${count}번`));
 
             if(input < 1 || input > 100){
                 alert('올바른 숫자를 입력해주세요.');
+                continue;
             }else if(input === answer){
                 alert('정답!');
-            }else if(i === count - 1){
+                break;
+            }else if(count === 1){
                 alert(`종료. 정답은 ${answer}`);
             }else if(input > answer){
                 alert('Down!');
-            }else{
+            }else if(input < answer){
                 alert('Up!');
+            }else{
+                alert('error');
+                continue;
             }
+            count--;
         }
     </script>
 </body>
