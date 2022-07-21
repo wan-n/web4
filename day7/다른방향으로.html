@@ -35,14 +35,14 @@
 
             const circle = document.getElementById('circle');
             let index = Number(circle.dataset.index);
-            circle.dataset.index = ++index;
 
-            if(index === 3){
-                circle.dataset.index = -1;
+            index++;
+            if(index === 4){
+                index = 0;
             }
 
             circle.style.transform = `translate(${preset[index].x}px, ${preset[index].y}px)`
-        
+            circle.dataset.index = index;
         }
     </script>
 </body>
