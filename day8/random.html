@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    /*    
+        Math.random()은 0~1 사이 값 반환(0이상 1미만)
+        Math.random()*100 은 0~100 사이 값 반환 (0이상 100미만, 0부터 99.99999...까지)
+        Math.floor()는 소수점을 버리는 함수이다.
+        Math.floor(Math.random()*100)  (0부터 99까지의 정수를 랜덤하게 반환)
+
+        특정 범위를 지정하려면 범위 사이의 수가 몇개 필요한지(*) 계산한 후
+        최솟값을 더한다.(+)
+    */
+
+        for(let i = 0; i < 100; i++){
+            const randomNumber = Math.floor(Math.random() * 21 + 40);  // 40부터 60까지의 정수 중 랜덤하게 반환
+            console(randomNumber);
+        }
+        
+    </script>
+</body>
+</html>

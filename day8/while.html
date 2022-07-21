@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+        while() 반복문
+        while(종료조건){
+            //반복할 내용;
+            //조건을 만족하는 동안 반복한다.
+            //조건이 true일 경우 무한반복
+       }
+
+       
+        break; : 흐름을 종료시키고 반복문에서 탈출
+        continue; : 반복문에서 탈출하진 않지만 continue를 만나면 아래쪽 구문이 모두 무시되고 다시 반복된다.
+    */
+
+        while(true){
+            const input = prompt('33을 입력하면 반복문이 종료됩니다.');
+            if(input === '33'){
+                break;
+            }
+        }
+
+
+        let count = 1;
+
+        while(true){
+            const input = prompt(`${count}번째 입력입니다. 1을 입력하면 카운트되지 않습니다.`);
+
+            if(input === '1'){
+                continue;
+            }
+
+            count++;
+        }
+    </script>
+</body>
+</html>
