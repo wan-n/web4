@@ -20,18 +20,19 @@
         //     count = 4;
         // }
 
-        //간단하게
-        count = 7 - prompt('난이도 선택(숫자만 입력)', '1: easy | 2: normal | 3: hard');
+        //간단하게  숫자 + '문자' = '문자'
+        count = 7 - Number(prompt('난이도 선택(숫자만 입력)', '1: easy | 2: normal | 3: hard'));
         
         for(let i = 0; i < count; i++){
             const input = Number(prompt('Up&Down 게임 : 1부터 100 사이의 수 입력'));
 
-            if(input < 1 || input > 100){
-                alert('올바른 숫자를 입력해주세요.');
-            }else if(input === answer){
+            if(input === answer){
                 alert('정답!');
+                break;
             }else if(i === count - 1){
                 alert(`종료. 정답은 ${answer}`);
+            }else if(input < 1 || input > 100){
+                alert('올바른 숫자를 입력해주세요.');
             }else if(input > answer){
                 alert('Down!');
             }else{

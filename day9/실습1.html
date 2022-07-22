@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 300px;
+            height: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .print{
+            font-size: 56px;
+            font-weight: bold;
+        }
+        .count-up{
+            width: 250px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="print">0</p>
+        <button class="count-up">카운트 증가</button>
+    </div>
+
+    <script>
+        const print = document.querySelector(".print");
+        const countUp = document.querySelector('.count-up');
+
+        countUp.addEventListener('click', () => {
+            let count = parseInt(print.innerText);
+
+            print.innerText = ++count;
+        });
+    </script>
+    
+</body>
+</html>

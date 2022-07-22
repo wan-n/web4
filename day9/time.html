@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            시간과 관련된 동작
+            setTimeout() : 일정 시간 뒤에 동작시킨다.
+            setInterval() : 일정 시간마다 동작시킨다.
+        */
+
+        setTimeout(() => {
+            document.write('5초 지남');
+        }, 5000);  //ms단위, 5초 뒤에 실행되는 함수
+
+
+        
+        for(let i = 1; i <= 10; i++){
+            setTimeout(() => {
+                console.log(`${i}초가 지났다.`);
+            }, 1000 * i);   //일정한 시간마다 작동 가능
+        }
+
+
+
+
+
+
+        
+        
+    </script>
+</body>
+</html>
