@@ -36,42 +36,25 @@
 
     <script>
         const print = document.querySelector('.print');
-        let count = 0;
-
-
-        // //1초마다 반복되는 함수
-        // setInterval(() => {
-        //     count++;
-        //     print.innerText = count;
-        // }, 1000);
-        
-        let countUP;
-        countUpStart();
-
         const countUpButton = document.querySelector('.count-up-button');
+        let count = 0;
+        let countUp = false;
+        
+
+        
 
         countUpButton.addEventListener('click', () => {
-
-            if(countUp){
-                console.log(countUP);
-                clearInterval(countUp);     //지정한 인터벌 함수 중지
-                countUp = false;   //기본 countUp값은 1(==true)이므로 인터벌함수가 진행중인지 아닌지 판단하기 위해 넣어주는 값.
-                countUpButton.innerText = "카운트 다시 시작";
-            }else{
-                console.log(countUP);
-                countUpStart();
-                countUpButton.innerText = "카운트 멈춤";
-            }
-             
-        });
-
-
-        function countUpStart(){
+            if(!countUp){
                 countUp = setInterval(() => {
-                count++;
-                print.innerText = count;
-            }, 1000);
-        }
+                    print.innerText = ++count;
+                }, 1000);
+                countUpButton.innerText = "카운트 멈춤";
+            }else{
+                clearInterval(countUp);
+                countUp = false;
+                countUpButton.innerText = "카운트 다시시작";
+            }
+        });
         
     </script> 
 </body>
