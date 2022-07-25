@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: linear-gradient(0deg, #ebebeb, #232323);
+        }
+
+        .container{
+            overflow: hidden;
+        }
+
+        h2{
+            margin: 1000px 0;
+            transition: 1s;
+        }
+
+        .to-top{
+            opacity: 0;
+            transform: translateY(-300px);
+        }
+
+        .to-left{
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+
+        .to-right{
+            opacity: 0;
+            transform: translateX(200px);
+        }
+
+        .to-bottom{
+            opacity: 0;
+            transform: translateY(300px);
+        }
+
+        .show{
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="sa to-left">안녕하세요</h2>
+        <h2 class="sa to-right">지금은 web4 과정에서</h2>
+        <h2 class="sa to-top">자바스크립트를</h2>
+        <h2 class="sa to-bottom">배우고 있습니다.</h2>
+    </div>
+
+    <script>
+        const scrollAnimation = document.getElementsByClassName('sa');
+
+        window.addEventListener('scroll', () => {
+            for(let i = 0; i < scrollAnimation.length; i++){
+                if(scrollAnimation[i].getBoundingClientRect().top - window.innerHeight*3/4 < 0){
+                    scrollAnimation[i].classList.add('show');
+                }else if(scrollAnimation[i].getBoundingClientRect().top - window.innerHeight >= 0){
+                    scrollAnimation[i].classList.remove('show');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
