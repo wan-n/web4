@@ -25,24 +25,23 @@
         const topButton = document.getElementById('top');
         const bottomButton = document.getElementById('bottom');
         const container = document.querySelector('.container');
-        let hour;
-        let minute;
 
         topButton.addEventListener('click', () => {
-            const nowDate = new Date();
-            hour = nowDate.getHours();
-            minute = nowDate.getMinutes();
-            const dateTag = document.createElement('p');
-            const tagInner = document.createTextNode(`[현재 시각은 ${hour}시 ${minute}분입니다.]`);
-
-            dateTag.appendChild(tagInner);
-
-            container.insertBefore(dateTag, container.children[0]);
+            container.insertBefore(bringDate(), container.children[0]);
         });
 
 
         bottomButton.addEventListener('click', () =>{
+
+            container.appendChild(bringDate());
+        });
+
+
+        function bringDate(){
+            let hour;
+            let minute;
             const nowDate = new Date();
+            
             hour = nowDate.getHours();
             minute = nowDate.getMinutes();
             const dateTag = document.createElement('p');
@@ -50,10 +49,8 @@
 
             dateTag.appendChild(tagInner);
 
-            container.appendChild(dateTag);
-        });
-
-
+            return dateTag;
+        }
 
     </script>
 </body>
