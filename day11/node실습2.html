@@ -31,21 +31,15 @@
         });
 
 
-        bottomButton.addEventListener('click', () =>{
-
+        bottomButton.addEventListener('click', () => {
             container.appendChild(bringDate());
         });
 
 
         function bringDate(){
-            let hour;
-            let minute;
             const nowDate = new Date();
-            
-            hour = nowDate.getHours();
-            minute = nowDate.getMinutes();
             const dateTag = document.createElement('p');
-            const tagInner = document.createTextNode(`[현재 시각은 ${hour}시 ${minute}분입니다.]`);
+            const tagInner = document.createTextNode(`[현재 시각은 ${nowDate.getHours()}시 ${nowDate.getMinutes()}분입니다.]`);
 
             dateTag.appendChild(tagInner);
 
