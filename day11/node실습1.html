@@ -20,10 +20,9 @@
         let count = 0;
 
         countButton.addEventListener('click', () => {
-            count++;
             const container = document.querySelector('.container');
             const countNode = document.createElement('p');
-            const nodeInner = document.createTextNode(`${count}번 눌렀습니다.`);
+            const nodeInner = document.createTextNode(`${++count}번 눌렀습니다.`);
 
             countNode.appendChild(nodeInner);
 
