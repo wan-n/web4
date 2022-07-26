@@ -9,6 +9,7 @@
 <body>
     <button id="top">위</button><button id="bottom">아래</button>
     <div class="container">
+        <hr>
         <!-- 
             버튼을 누르면
             [현재 시각은 hh시 mm분입니다.]
@@ -27,7 +28,7 @@
         const container = document.querySelector('.container');
 
         topButton.addEventListener('click', () => {
-            container.insertBefore(bringDate(), container.children[0]);
+            container.insertBefore(bringDate(), container.firstChild);
         });
 
 
