@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <!-- <span>현재시간은</span> -->
+        <span>시계를 보세요</span>
+    </div>
+
+    <script>
+        //태그 생성
+        const makeNode = document.createElement('span'); 
+        //텍스트 노드 생성 - 태그 내부에 텍스트 삽입
+        const nodeInner = document.createTextNode('현재시간은'); 
+
+
+        //생성한 태그와 텍스트 노드 연결
+        makeNode.appendChild(nodeInner); 
+
+        //사용할 개체 불러오기
+        const container = document.querySelector('.container');
+        
+
+        //개체.firstChild 로 자식 태그 중 가장 첫번째 태그 선택 가능
+        container.insertBefore(makeNode, container.firstChild) 
+
+        //개체.children[] 으로 자식 태그의 인덱스로 불러오기 가능
+    </script>
+</body>
+</html>
