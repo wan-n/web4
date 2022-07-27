@@ -25,14 +25,15 @@
     <script>
         const topButton = document.getElementById('top');
         const bottomButton = document.getElementById('bottom');
-        const container = document.querySelector('.container');
 
         topButton.addEventListener('click', () => {
+            const container = document.querySelector('.container');
             container.insertBefore(bringDate(), container.firstChild);
         });
 
 
         bottomButton.addEventListener('click', () => {
+            const container = document.querySelector('.container');
             container.appendChild(bringDate());
         });
 
@@ -44,7 +45,7 @@
 
             dateTag.appendChild(tagInner);
 
-            return dateTag;
+            return dateTag;  //노드 리턴
         }
 
     </script>

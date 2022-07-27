@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="del-button">삭제</button>
+    <p id="place">버튼을 누르면 이 태그가 삭제됩니다.</p>
+    <!-- 내용 삭제가 아닌 태그 삭제 -->
+
+    <script>
+        const delButton = document.getElementById('del-button');
+        const place = document.getElementById('place');
+        const body = document.getElementsByTagName('body');
+
+        delButton.addEventListener('click', () => {
+            //removeChild() - 노드 제거 메서드
+            //부모요소의 자식요소를 선택하여 제거
+            body[0].removeChild(place);   
+        });
+    </script>
+</body>
+</html>
