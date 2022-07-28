@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.addEventListener('keydown', e => {
+            //keydown 이벤트 함수의 파라미터로 발생한 이벤트의 정보를 담은 객체를 가져올 수 있다.
+            console.log(e);
+
+            //key 파라미터로 어떠한 키가 눌렸는지 확인 가능하다.
+            console.log(e.key);
+            alert(`당신이 누른 것은 '${e.key}'입니다.`);
+        });
+    </script>
+</body>
+</html>

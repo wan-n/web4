@@ -86,34 +86,48 @@
 
         const inputBox = document.getElementsByTagName('input')[0];
         const searchButton = document.getElementsByTagName('button')[0];
+        const history = document.getElementsByClassName('search-history')[0];
         
 
         searchButton.addEventListener('click', () => {
-            const history = document.getElementsByClassName('search-history')[0];
+          history.insertBefore(makeLiNode(inputBox.value), history.firstChild);
+          inputBox.value = '';
 
-            //검색어 리스트
-            const searchList = document.createElement('li');
-            const listInner = document.createTextNode(inputBox.value);
-            searchList.appendChild(listInner);
-
-            history.insertBefore(searchList, history.firstChild);
-            inputBox.value = '';
             
-
-            //삭제 버튼
-            const removeButton = document.createElement('span');
-            const buttonInner = document.createTextNode('삭제');
-            removeButton.appendChild(buttonInner);
-
-            searchList.appendChild(removeButton);
-            
-
-            //삭제 동작
-            removeButton.addEventListener('click', () => {
-                searchList.remove();
-                //history.removeChild(searchList);
-            });
         });
+
+        //input 태그에서의 키보드 동작
+        inputBox.addEventListener('keydown', e => {
+          //Enter를 눌렀을 때
+          if(e.key === "Enter"){
+            history.insertBefore(makeLiNode(inputBox.value), history.firstChild);
+            inputBox.value = '';
+          }
+        });
+
+        function makeLiNode(text){
+          //검색어 리스트
+          const searchList = document.createElement('li');
+          const listInner = document.createTextNode(text);
+          searchList.appendChild(listInner);
+
+
+          //삭제 버튼
+          const removeButton = document.createElement('span');
+          const buttonInner = document.createTextNode('삭제');
+          removeButton.appendChild(buttonInner);
+
+          searchList.appendChild(removeButton);
+          
+
+          //삭제 동작
+          removeButton.addEventListener('click', () => {
+              searchList.remove();
+              //history.removeChild(searchList);
+            });
+
+            return searchList;
+        }
     </script>
 </body>
 </html>
