@@ -80,7 +80,7 @@
 
 
         //슬라이드 추가
-        //true : 자식 노드 복사 여부
+        //cloneNode() : 노드 복사, true : 자식 노드 복사 여부
         const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);  
         const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
 
@@ -109,7 +109,7 @@
         buttons[1].addEventListener('click', () => {
             slideIndex++;
             moveSlide(true);
-            if(slideIndex === slideContentsWrapper.childElementCount - 1){
+            if(slideIndex === slideNum - 1){
                 setTimeout(() => {
                     slideIndex = 1;
                     moveSlide(false);
