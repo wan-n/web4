@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>carousel</title>
     <style>
         :root{
             --slider-width: 300px;
@@ -22,7 +22,7 @@
             height: 200px;
             margin: 24px;
             border: 5px solid black;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
 
         .slide-contents-wrapper{
@@ -97,24 +97,26 @@
         buttons[0].addEventListener('click', () => {
             slideIndex--;
             moveSlide(true);
-            if(slideIndex === 0){
-                setTimeout(() => {
+            
+            setTimeout(() => {
+                if(slideIndex === 0){
                     slideIndex = 3;
                     moveSlide(false);
-                }, 300); 
-            }
+                }
+            }, 300); 
         });
 
         //next
         buttons[1].addEventListener('click', () => {
             slideIndex++;
             moveSlide(true);
-            if(slideIndex === slideNum - 1){
-                setTimeout(() => {
+            
+            setTimeout(() => {
+                if(slideIndex === slideNum - 1){
                     slideIndex = 1;
                     moveSlide(false);
-                }, 300);
-            }
+                }
+            }, 300);
         });
 
 
