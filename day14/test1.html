@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --slider-width: 300px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+
+        .slider{
+            width: var(--slider-width);
+            height: 200px;
+            margin: 24px;
+            border: 5px solid black;
+            overflow: hidden;
+        }
+
+        .slide-contents-wrapper{
+            display: flex;
+
+        }
+
+        .slide-content{
+            width: var(--slider-width);
+            height: 200px;
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            flex-shrink: 0;
+        }
+
+        .slide-content:nth-child(2), .slide-content:nth-child(5){
+            background-color: red;
+        }
+        .slide-content:nth-child(3){
+            background-color: blue;
+        }
+        .slide-content:nth-child(4), .slide-content:nth-child(1){
+            background-color: green;
+        }
+
+        .buttons{
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul class="slide-contents-wrapper">
+            <li class="slide-content">1</li>
+            <li class="slide-content">2</li>
+            <li class="slide-content">3</li>
+        </ul>
+    </div>
+
+    <div class="buttons">
+        <button class="slide-button">이전</button>
+        <button class="slide-button">다음</button>
+    </div>
+
+    <script>
+        const slideContentsWrapper = document.querySelector('.slide-contents-wrapper'); 
+        const buttons = document.getElementsByClassName('slide-button');    //버튼
+        const slideWidth = document.querySelector('.slider').clientWidth;   //슬라이드 너비
+        let slideIndex = 1;     //현재 인덱스
+
+
+        //슬라이드 추가
+        const firstSlide = document.createElement('li');
+        const lastSlide = document.createElement('li');
+
+        firstSlide.appendChild(document.createTextNode('3'));
+        lastSlide.appendChild(document.createTextNode('1'));
+
+        firstSlide.classList.add('slide-content');
+        lastSlide.classList.add('slide-content');
+
+        
+        slideContentsWrapper.insertBefore(firstSlide, slideContentsWrapper.firstChild);
+        slideContentsWrapper.appendChild(lastSlide);
+        slideContentsWrapper.style.transform = `translateX(-${slideWidth * (slideIndex)}px)`;
+
+        const slideNum = slideContentsWrapper.childElementCount;
+
+
+        //prev
+        buttons[0].addEventListener('click', () => {
+            slideContentsWrapper.style.transition = `.3s`;
+            slideContentsWrapper.style.transform = `translateX(-${slideWidth * --slideIndex}px)`;
+            skipEffect();
+        });
+
+        //next
+        buttons[1].addEventListener('click', () => {
+            slideContentsWrapper.style.transition = `.3s`;
+            slideContentsWrapper.style.transform = `translateX(-${slideWidth * ++slideIndex}px)`;
+            skipEffect();
+        });
+
+
+        function skipEffect(){
+            if(slideIndex === 0){
+                setTimeout(() => {
+                    slideContentsWrapper.style.transition = `0s`;
+                    slideIndex = slideNum - 2;
+                    slideContentsWrapper.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+                }, 300);
+            } else if(slideIndex === slideNum - 1){
+                setTimeout(() => {
+                    slideContentsWrapper.style.transition = `0s`;
+                    slideIndex = 1;
+                    slideContentsWrapper.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>

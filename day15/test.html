@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>글자색 변경</p>
+    <button>test</button>
+    
+    <script>
+        // const pText = document.querySelector('p');
+        // const btn = document.querySelector('button');
+
+        // btn.addEventListener('click', changeColor);
+
+        // function changeColor(){
+        //     pText.style.color = `red`;
+        // }
+
+
+
+
+
+    
+
+
+        // const pText = document.querySelector('p');
+        // const btn = document.querySelector('button');
+
+        // btn.addEventListener('click', () => {
+        //     pText.style.color = `red`;
+        // });
+
+
+
+
+
+
+
+        const pText = document.querySelector('p');
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', changeColor('red'));
+
+        function changeColor(textColor){
+            pText.style.color = textColor;
+        }
+    </script>
+</body>
+</html>

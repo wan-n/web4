@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+
+        .slider{
+            width: 300px;
+            height: 200px;
+            margin: 24px;
+            border: 5px solid black;
+            overflow: hidden;
+        }
+
+        .slide-contents-wrapper{
+            display: flex;
+            transition: 1s;
+
+        }
+
+        .slide-content{
+            width: 300px;
+            height: 200px;
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            flex-shrink: 0;
+        }
+
+        .slide-content:nth-child(1){
+            background-color: red;
+        }
+        .slide-content:nth-child(2){
+            background-color: blue;
+        }
+        .slide-content:nth-child(3){
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul class="slide-contents-wrapper">
+            <li class="slide-content">1</li>
+            <li class="slide-content">2</li>
+            <li class="slide-content">3</li>
+        </ul>
+    </div>
+
+    <script>
+        const slideContentsWrapper = document.querySelector(`.slide-contents-wrapper`);
+        let move = 0;
+
+        slideContentsWrapper.addEventListener("click", () => {
+            if(move === 600){
+                move = 0;
+            }else{
+                move += 300;
+            }
+            
+            slideContentsWrapper.style.transform = `translate(-${move}px)`;
+        });
+    </script>
+</body>
+</html>
