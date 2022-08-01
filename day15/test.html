@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <style>
+        :root{
+            --slider-width: 300px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+
+        .slider{
+            width: var(--slider-width);
+            height: 200px;
+            margin: 24px;
+            border: 5px solid black;
+            overflow: hidden;
+        }
+
+        .slide-contents-wrapper{
+            display: flex;
+
+        }
+
+        .slide-content{
+            width: var(--slider-width);
+            height: 200px;
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            flex-shrink: 0;
+        }
+
+        .content1{
+            background-color: red;
+        }
+        .content2{
+            background-color: blue;
+        }
+        .content3{
+            background-color: green;
+        }
+
+        .buttons{
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul class="slide-contents-wrapper">
+            <li class="slide-content content1">1</li>
+            <li class="slide-content content2">2</li>
+            <li class="slide-content content3">3</li>
+        </ul>
+    </div>
+
+    <div class="buttons">
+        <button class="slide-button">이전</button>
+        <button class="slide-button">다음</button>
+    </div>
+
+    <script>
+        /*
+            사용자가 접근하지 못하게 전체를 함수화 시켜주는 것이 좋다.
+            이 때 요소들을 전달인자로 받아서 여러 슬라이드를 생성하도록 하면 재사용성이 높아진다.
+            
+        */
+
+
+        makeSlider(`.slide-contents-wrapper`, `.buttons`, `.slider`);
+
+        function makeSlider(wrapper, btnPNode, slider){
+
+            const slideContentsWrapper = document.querySelector(wrapper);
+            const buttons = document.querySelector(btnPNode);
+            const slideWidth = document.querySelector(slider).clientWidth;   //슬라이드 너비
+            
+
+
+            //슬라이드 추가
+            //cloneNode() : 노드 복사, true : 자식 노드 복사 여부
+            const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);  
+            const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
+
+            
+            slideContentsWrapper.insertBefore(cloneLast, slideContentsWrapper.firstChild);
+            slideContentsWrapper.appendChild(cloneFirst);
+
+            const slideNum = slideContentsWrapper.childElementCount;   //슬라이드 개수
+            let moveChecker = true; //transition 동안은 슬라이드가 이동하지 않게 관리 한다.(이동 가능한 상태 : true)
+            let slideIndex = 1;     //현재 인덱스
+            moveSlide(false);
+
+
+            //prev
+            buttons.children[0].addEventListener('click', () => {
+                if(moveChecker){
+                    moveChecker = false;
+                    slideIndex--;
+                    moveSlide(true);
+                    
+                    setTimeout(() => {
+                        moveChecker = true;
+                        if(slideIndex === 0){
+                            slideIndex = slideNum - 2;
+                            moveSlide(false);
+                        }
+                    }, 300);
+                }
+            });
+
+            //next
+            buttons.children[1].addEventListener('click', () => {
+                if(moveChecker){
+                    moveChecker = false;
+                    slideIndex++;
+                    moveSlide(true);
+                    
+                    setTimeout(() => {
+                        moveChecker = true;
+                        if(slideIndex === slideNum - 1){
+                            slideIndex = 1;
+                            moveSlide(false);
+                        }
+                    }, 300);
+                }
+            });
+
+
+            function slide(vector){
+                if(moveChecker){
+                    let start;      //skip effect의 시작 인덱스
+                    let end;        //skip effect의 도착 인덱스
+                    moveChecker = false;
+
+                    if(vector){
+                        //next
+                        slideIndex++;
+                        start = slideNum - 1;
+                        end = 1;
+                    }else{
+                        //prev
+                        slideIndex--;
+                        start = 0;
+                        end = slideNum - 2;
+                    }
+
+                    moveSlide(true);
+                    setTimeout(() => {
+                        moveChecker = true;
+                        if(slideIndex === start){
+                            slideIndex = end;
+                            moveSlide(false);
+                        }
+                    }, 300);
+                }
+            }
+
+
+
+
+            //슬라이드 이동 + 스킵 이펙트
+            function moveSlide(transition){
+                
+                if(transition){
+                    slideContentsWrapper.style.transition = `.3s`;
+                }else{
+                    slideContentsWrapper.style.transition = `0s`;
+                }
+                slideContentsWrapper.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>

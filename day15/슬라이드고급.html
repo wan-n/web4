@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carousel</title>
+    <title>Carousel</title>
     <style>
         :root{
             --slider-width: 300px;
@@ -77,6 +77,7 @@
         const buttons = document.getElementsByClassName('slide-button');    //버튼
         const slideWidth = document.querySelector('.slider').clientWidth;   //슬라이드 너비
         let slideIndex = 1;     //현재 인덱스
+        let moveChecker = true; //transition 동안은 슬라이드가 이동하지 않게 관리 한다.(이동 가능한 상태 : true)
 
 
         //슬라이드 추가
@@ -89,34 +90,43 @@
         slideContentsWrapper.appendChild(cloneFirst);
         moveSlide(false);
 
-        const slideContents = document.getElementsByClassName('slide-contents');
-        const slideNum = slideContentsWrapper.childElementCount;
+        const slideNum = slideContentsWrapper.childElementCount;   //슬라이드 개수
 
 
         //prev
         buttons[0].addEventListener('click', () => {
-            slideIndex--;
-            moveSlide(true);
-            
-            setTimeout(() => {
-                if(slideIndex === 0){
-                    slideIndex = 3;
-                    moveSlide(false);
-                }
-            }, 300); 
+            if(moveChecker){
+                moveChecker = false;
+                slideIndex--;
+                moveSlide(true);
+                
+                setTimeout(() => {
+                    moveChecker = true;
+                    if(slideIndex === 0){
+                        slideIndex = slideNum - 2;
+                        moveSlide(false);
+                    }
+                }, 300);
+            }
+ 
         });
 
         //next
         buttons[1].addEventListener('click', () => {
-            slideIndex++;
-            moveSlide(true);
-            
-            setTimeout(() => {
-                if(slideIndex === slideNum - 1){
-                    slideIndex = 1;
-                    moveSlide(false);
-                }
-            }, 300);
+            if(moveChecker){
+                moveChecker = false;
+                slideIndex++;
+                moveSlide(true);
+                
+                setTimeout(() => {
+                    moveChecker = true;
+                    if(slideIndex === slideNum - 1){
+                        slideIndex = 1;
+                        moveSlide(false);
+                    }
+                }, 300);
+            }
+
         });
 
 
