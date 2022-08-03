@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <style>
+        :root{
+            --slider-width: 300px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+
+        .slider{
+            width: var(--slider-width);
+            height: 200px;
+            margin: 24px;
+            border: 5px solid black;
+            /* overflow: hidden; */
+        }
+
+        .slide-contents-wrapper{
+            display: flex;
+
+        }
+
+        .slide-content{
+            width: var(--slider-width);
+            height: 200px;
+            font-size: 56px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            flex-shrink: 0;
+        }
+
+        .content1{
+            background-color: red;
+        }
+        .content2{
+            background-color: blue;
+        }
+        .content3{
+            background-color: green;
+        }
+
+        .buttons{
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 24px;
+        }
+
+        .radio-container{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .radio{
+            background-color: gray;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .radio.selected{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <ul class="slide-contents-wrapper">
+            <li class="slide-content content1">1</li>
+            <li class="slide-content content2">2</li>
+            <li class="slide-content content3">3</li>
+        </ul>
+    </div>
+
+    <div class="buttons">
+        <button class="slide-button">이전</button>
+        <div class="radio-container"></div>
+        <button class="slide-button">다음</button>
+    </div>
+
+    <script>
+        const slideContentsWrapper = document.querySelector('.slide-contents-wrapper'); 
+        const buttons = document.getElementsByClassName('slide-button');    //버튼
+        const slideWidth = document.querySelector('.slider').clientWidth;   //슬라이드 너비
+        const radioContainer =document.querySelector('.radio-container');
+        let slideIndex = 1;     //현재 인덱스
+        let moveChecker = true; //transition 동안은 슬라이드가 이동하지 않게 관리 한다.(이동 가능한 상태 : true)
+        let slideNum = slideContentsWrapper.childElementCount;   //슬라이드 개수
+
+
+
+        //라디오버튼 생성
+        for(let i = 0; i < slideNum; i++){
+            const radioButton = document.createElement('div');
+            radioButton.classList.add('radio');
+            radioContainer.appendChild(radioButton);
+
+            radioButton.addEventListener('click', () => {
+                slideIndex = i + 1;
+                moveSlide(true);
+                selectRadio();
+            });
+        }
+
+        //선택된 라디오 버튼에 색 변경 클래스 추가
+        radioContainer.firstChild.classList.add('selected');
+        const radioNum = radioContainer.childElementCount;
+
+
+
+        //슬라이드 추가
+        //cloneNode() : 노드 복사, true : 자식 노드 복사 여부
+        const cloneFirst = slideContentsWrapper.firstElementChild.cloneNode(true);  
+        const cloneLast = slideContentsWrapper.lastElementChild.cloneNode(true);
+        
+        slideContentsWrapper.insertBefore(cloneLast, slideContentsWrapper.firstChild);
+        slideContentsWrapper.appendChild(cloneFirst);
+        moveSlide(false);
+
+        slideNum = slideContentsWrapper.childElementCount;   //슬라이드 개수
+
+
+        //prev
+        buttons[0].addEventListener('click', () => {
+            if(moveChecker){
+                moveChecker = false;
+                slideIndex--;
+                moveSlide(true);
+
+                selectRadio();
+                
+                setTimeout(() => {
+                    moveChecker = true;
+                    if(slideIndex === 0){
+                        slideIndex = slideNum - 2;
+                        moveSlide(false);
+                    }
+                }, 1000);
+            }
+ 
+        });
+
+        //next
+        buttons[1].addEventListener('click', () => {
+            if(moveChecker){
+                moveChecker = false;
+                slideIndex++;
+                moveSlide(true);
+
+                selectRadio();
+                
+                setTimeout(() => {
+                    moveChecker = true;
+                    if(slideIndex === slideNum - 1){
+                        slideIndex = 1;
+                        moveSlide(false);
+                    }
+                }, 1000);
+            }
+
+        });
+
+
+        //라디오 버튼 컬러 변경
+        function selectRadio(){
+            for(let i = 0; i < radioNum; i++){
+                    radioContainer.children[i].classList.remove('selected');
+                }
+
+                if(slideIndex === slideNum - 1){
+                    radioContainer.children[0].classList.add('selected');
+                }else if(slideIndex === 0){
+                    radioContainer.children[radioNum - 1].classList.add('selected');
+                }else{
+                    radioContainer.children[slideIndex - 1].classList.add('selected');
+                }
+        }
+
+
+        //슬라이드 이동 + 스킵 이펙트
+        function moveSlide(transition){
+            slideContentsWrapper.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+            if(transition){
+                slideContentsWrapper.style.transition = `1s`;
+            }else{
+                slideContentsWrapper.style.transition = `0s`;
+            }
+        }
+
+
+    </script>
+</body>
+</html>
